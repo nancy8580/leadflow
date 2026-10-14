@@ -109,7 +109,7 @@ def add_discussion(
     return discussion
 
 @app.patch(
-    "/Leads/{lead_id}/status", 
+    "/leads/{lead_id}/status", 
     response_model=schemas.LeadOut, 
     status_code=200  )
 def update_status(lead_id: int, data: schemas.LeadStatusUpdate, db: Session = Depends(get_db)):
