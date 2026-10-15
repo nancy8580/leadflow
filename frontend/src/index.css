@@ -1,0 +1,400 @@
+:root {
+  --bg: #f6f7f9;
+  --surface: #ffffff;
+  --border: #e3e6eb;
+  --text: #1c2430;
+  --muted: #6b7480;
+  --primary: #2f6fed;
+  --primary-hover: #2459c7;
+  --danger: #d93025;
+  --danger-bg: #fdecea;
+  --pin-bg: #fffbea;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: var(--text);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+.app {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.header h1 {
+  font-size: 24px;
+}
+
+/* ---------- Buttons & inputs ---------- */
+
+.btn {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: var(--primary-hover);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.icon-btn {
+  border: none;
+  background: none;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--muted);
+}
+
+input,
+select,
+textarea {
+  font: inherit;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--text);
+}
+
+textarea {
+  resize: vertical;
+  width: 100%;
+}
+
+/* ---------- Toolbar ---------- */
+
+.toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.search {
+  width: 100%;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.chip {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  border-radius: 999px;
+  padding: 5px 12px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.chip-active {
+  background: var(--text);
+  border-color: var(--text);
+  color: #fff;
+}
+
+/* ---------- Lead list ---------- */
+
+.section-title {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  margin: 20px 0 8px;
+}
+
+.lead-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.lead-list.pinned {
+  background: var(--pin-bg);
+}
+
+.lead-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+}
+
+.lead-row:last-child {
+  border-bottom: none;
+}
+
+.lead-row:hover {
+  background: rgba(47, 111, 237, 0.05);
+}
+
+.lead-overdue {
+  border-left: 4px solid var(--danger);
+}
+
+.lead-main {
+  min-width: 0;
+}
+
+.lead-title {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.lead-name {
+  font-weight: 600;
+}
+
+.lead-company {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.lead-note {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.lead-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.follow-up {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.follow-up.today {
+  color: var(--primary);
+  font-weight: 500;
+}
+
+.follow-up.overdue {
+  color: var(--danger);
+  font-weight: 600;
+}
+
+/* ---------- Status badges ---------- */
+
+.badge {
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-weight: 500;
+}
+
+.badge-new { background: #e8f0fe; color: #1a56c7; }
+.badge-contacted { background: #fef3e0; color: #a35a00; }
+.badge-qualified { background: #f0e8fd; color: #6b30c7; }
+.badge-proposal-sent { background: #e0f4f4; color: #0b6e6e; }
+.badge-won { background: #e6f4ea; color: #1e7b34; }
+.badge-lost { background: #f1f3f4; color: #5f6368; }
+
+/* ---------- Modal ---------- */
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(20, 24, 31, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  z-index: 10;
+}
+
+.modal {
+  background: var(--surface);
+  border-radius: 12px;
+  width: 100%;
+  max-width: 560px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 12px;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h2 {
+  font-size: 20px;
+}
+
+/* ---------- Forms ---------- */
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.form label {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.form label.inline,
+label.inline {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.required {
+  color: var(--danger);
+}
+
+/* ---------- Timeline ---------- */
+
+.timeline-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.timeline {
+  flex: 1;
+  overflow-y: auto;
+  min-height: 120px;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 8px 0;
+}
+
+.timeline ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.timeline-item {
+  padding: 8px 0 8px 14px;
+  border-left: 2px solid var(--border);
+  margin-left: 4px;
+}
+
+.timeline-date {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.timeline-item p {
+  margin-top: 2px;
+  font-size: 14px;
+}
+
+.discussion-form-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* ---------- Misc ---------- */
+
+.muted {
+  color: var(--muted);
+}
+
+.small {
+  font-size: 13px;
+}
+
+.error {
+  color: var(--danger);
+  background: var(--danger-bg);
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.empty {
+  text-align: center;
+  color: var(--muted);
+  padding: 40px 0;
+}
+
+@media (max-width: 560px) {
+  .lead-row {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .lead-meta {
+    align-items: flex-start;
+  }
+}
