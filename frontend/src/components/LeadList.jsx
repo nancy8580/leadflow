@@ -1,12 +1,13 @@
 import LeadRow from "./LeadRow";
 import { isOverdue, isToday } from "../time";
 
+const CLOSED = new Set(["Won", "Lost"]);
 const byFollowUp = (a, b) => new Date(a.follow_up_at) - new Date(b.follow_up_at);
 
 export default function LeadList({ leads, onOpen }) {
-  // Pin follow-ups due today, plus any that are already overdue
+  // Pin follow-ups due today, plus any that are already overdue (closed leads are never pinned)
   const pinned = leads
-    .filter((l) => isToday(l.follow_up_at) || isOverdue(l.follow_up_at))
+    .filter((l) => !CLOSED.has(l.status) && (isToday(l.follow_up_at) || isOverdue(l.follow_up_at)))
     .sort(byFollowUp);
   const pinnedIds = new Set(pinned.map((l) => l.id));
   const rest = leads.filter((l) => !pinnedIds.has(l.id));

@@ -28,10 +28,17 @@ def ist_day_at(hour: int, minute: int = 0, days_from_today: int = 0) -> datetime
     return utc(local + timedelta(days=days_from_today))
 
 
+def later_today_ist() -> datetime:
+    """Two hours from now, but no later than 11:45 PM in India, so it still counts as "today"."""
+    now = datetime.now(IST)
+    end_of_day = now.replace(hour=23, minute=45, second=0, microsecond=0)
+    return utc(min(now + timedelta(hours=2), end_of_day))
+
+
 SEED_LEADS = [
     {
         "name": "Rahul Sharma", "company": "Infosys", "phone": "9876543210",
-        "status": "Contacted", "follow_up_at": ist_day_at(18),
+        "status": "Contacted", "follow_up_at": later_today_ist(),
         "created_at": ago(days=4),
         "notes": [
             ("Intro call. Interested in the premium advisory plan.", ago(days=3)),

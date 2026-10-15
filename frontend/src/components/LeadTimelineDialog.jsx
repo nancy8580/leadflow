@@ -4,7 +4,7 @@ import DiscussionForm from "./DiscussionForm";
 import { STATUSES, addDiscussion, getDiscussions, updateStatus } from "../api";
 import { formatDateTime, isOverdue } from "../time";
 
-export default function LeadTimelineDialog({ lead, onClose, onLeadChanged }) {
+export default function LeadTimelineDialog({ lead, onClose, onLeadChanged, onStatusChanged }) {
   const [discussions, setDiscussions] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -25,7 +25,7 @@ export default function LeadTimelineDialog({ lead, onClose, onLeadChanged }) {
     setError("");
     try {
       const updated = await updateStatus(lead.id, e.target.value);
-      onLeadChanged(updated);
+      onStatusChanged(updated);
     } catch (err) {
       setError(err.message);
     }

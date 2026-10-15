@@ -12,7 +12,7 @@ export default function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [showAdd, setShowAdd] = useState(false);
-  const [selectedId, setSelectedId] = useState(null);
+  const [selected, setSelected] = useState(null);
 
   const loadLeads = useCallback(async () => {
     try {
@@ -33,14 +33,19 @@ export default function App() {
 
   function handleLeadChanged(updated) {
     setLeads((prev) => prev.map((l) => (l.id === updated.id ? { ...l, ...updated } : l)));
+    setSelected((prev) => (prev && prev.id === updated.id ? { ...prev, ...updated } : prev));
+  }
+
+  // A new status may no longer match the active filter, so refetch the list
+  function handleStatusChanged(updated) {
+    handleLeadChanged(updated);
+    loadLeads();
   }
 
   function handleLeadCreated() {
     setShowAdd(false);
     loadLeads();
   }
-
-  const selected = leads.find((l) => l.id === selectedId);
 
   return (
     <div className="app">
@@ -57,7 +62,7 @@ export default function App() {
       {loading ? (
         <p className="muted">Loading leads…</p>
       ) : (
-        <LeadList leads={leads} onOpen={(lead) => setSelectedId(lead.id)} />
+        <LeadList leads={leads} onOpen={setSelected} />
       )}
 
       {showAdd && (
@@ -66,8 +71,9 @@ export default function App() {
       {selected && (
         <LeadTimelineDialog
           lead={selected}
-          onClose={() => setSelectedId(null)}
+          onClose={() => setSelected(null)}
           onLeadChanged={handleLeadChanged}
+          onStatusChanged={handleStatusChanged}
         />
       )}
     </div>
