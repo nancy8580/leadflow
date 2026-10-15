@@ -34,7 +34,9 @@ export default function AddLeadDialog({ onClose, onCreated }) {
     <Modal title="Add new lead" onClose={onClose}>
       <form className="form" onSubmit={handleSubmit}>
         <label>
-          Name <span className="required">*</span>
+          <span>
+            Name <span className="required">*</span>
+          </span>
           <input value={form.name} onChange={update("name")} autoFocus maxLength={100} />
         </label>
         <label>

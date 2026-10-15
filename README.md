@@ -18,6 +18,36 @@ A single-screen lead management tool: track leads, log every discussion, and set
 - Seed script with 7 leads and their discussions
 - Docker Compose setup
 
+## Screenshots
+
+**Lead list:** follow-ups due today and overdue are pinned at the top, and overdue ones are marked in red.
+
+![Lead list with pinned follow-ups](docs/lead-list.png)
+
+**Search by name**
+
+![Searching leads by name](docs/search.png)
+
+**Filter by status:** only Contacted leads are shown.
+
+![Status filter set to Contacted](docs/filter-contacted.png)
+
+**Change a lead's status:** with the Contacted filter still on, Karan Malhotra was changed to Qualified. The list reloads, so he drops out of the filtered list behind the dialog.
+
+![Changing a lead's status while a filter is active](docs/status-change.png)
+
+**Lead timeline:** discussion history (newest first), status dropdown and the form for adding a note with an optional follow-up.
+
+![Lead timeline dialog](docs/lead-timeline.png)
+
+**After adding a note:** the note had a follow-up for tomorrow, so Rahul Sharma left the pinned section. His row now shows the new note, "just now" and the new follow-up time.
+
+![List updated after adding a note](docs/after-adding-note.png)
+
+**Add a lead:** name is required, and the status defaults to New.
+
+![Add lead dialog with validation](docs/add-lead.png)
+
 ## Project structure
 
 ```
