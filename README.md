@@ -103,3 +103,15 @@ Errors: `404` for an unknown lead, `422` for invalid input (e.g. empty name or u
 
 - All times are stored in UTC and converted to the browser's local time for display.
 - "Today's follow-ups" uses the browser's local date.
+
+## Use of AI
+
+I used Claude Code (Anthropic's AI coding assistant) during development. To be clear about what came from where:
+
+- **Backend** (`backend/` — models, schemas, API routes, seed script): written by me, with AI used for guidance and debugging.
+- **AI-generated, reviewed by me:**
+  - The React frontend (`frontend/`): all components, the API client, date helpers and styles
+  - Docker setup (`Dockerfile`s, `docker-compose.yml`) and the `.env.example` files
+  - Repo cleanup (removing the committed `venv`/`__pycache__`/database, adding `.gitignore`, fixing the encoding of `requirements.txt`)
+  - This README
+- **Verification:** the frontend build was checked, and every API endpoint was tested against the seeded database (status codes 200/201/404/422). The Docker setup was written but not run locally.
