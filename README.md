@@ -108,7 +108,7 @@ Errors: `404` for an unknown lead, `422` for invalid input (e.g. empty name or u
 
 I used Claude Code (Anthropic's AI coding assistant) during development. To be clear about what came from where:
 
-- **Backend** (`backend/` — models, schemas, API routes, seed script): written by me, with AI used for guidance and debugging.
+- **Backend** (`backend/` — models, schemas, API routes, seed script): written by me, with Claude guiding me step by step (explaining approaches and helping debug) while I wrote the code.
 - **AI-generated, reviewed by me:**
   - The React frontend (`frontend/`): all components, the API client, date helpers and styles
   - Docker setup (`Dockerfile`s, `docker-compose.yml`) and the `.env.example` files
