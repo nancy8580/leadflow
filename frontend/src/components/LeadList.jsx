@@ -19,7 +19,7 @@ export default function LeadList({ leads, onOpen }) {
     <>
       {pinned.length > 0 && (
         <section>
-          <h3 className="section-title">📌 Today's follow-ups</h3>
+          <h3 className="section-title">📌 Due today & overdue</h3>
           <ul className="lead-list pinned">
             {pinned.map((lead) => (
               <LeadRow key={lead.id} lead={lead} onOpen={onOpen} />
